@@ -64,3 +64,17 @@ test('should score 16 for a spare followed by a 3-ball', () => {
 
   expect(game.calculateScore()).toBe(16);
 });
+
+test('should score 9 for all frames [9,0,9,0,...] (90)', () => {
+  const game = new BowlingGame();
+
+  // Roll 9 and 0 for each frame (10 frames)
+  Array.from({ length: 10 }, () => {
+    game.rollBall(9);
+    game.rollBall(0);
+  });
+
+  // Expect the total score to be 90
+  expect(game.calculateScore()).toBe(90);
+});
+
